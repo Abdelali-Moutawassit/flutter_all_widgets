@@ -21,7 +21,11 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        body: Padding(padding: EdgeInsets.all(20), child: Text("Test")),
+        //Center Widget
+        body: Center(
+          widthFactor: 20,
+          heightFactor: 20, 
+          child: Text("Test")),
       ),
     );
   }
