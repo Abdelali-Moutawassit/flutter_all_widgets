@@ -23,54 +23,36 @@ class MyApp extends StatelessWidget {
         ),
         //Center Widget
         /*
-        *FITTEDBOX WIDGET*
-
-*Définition*:
-Le widget FittedBox est utilisé pour ajuster la taille d'un widget enfant pour qu'il soit contenu dans son parent, tout en conservant son aspect ratio. Il permet de faire en sorte qu'un widget s'adapte à l'espace disponible sans être coupé ou déformé.
+        *Définition*:
+Le widget AspectRatio est utilisé pour maintenir le rapport d'aspect (largeur/hauteur) d'un widget enfant, même lorsque les dimensions de son parent changent. Il permet de conserver la forme originale d'un widget lors du redimensionnement.
 
 *Utilisation*:
-Utilisez FittedBox pour:
+Utilisez AspectRatio pour:
 
-- Ajuster la taille d'une image pour qu'elle soit visible dans son intégralité
-- Faire en sorte qu'un texte s'adapte à la largeur disponible sans être coupé
-- Conserver l'aspect ratio d'un widget lors du redimensionnement
+- Conserver le rapport d'aspect d'une image ou d'une vidéo
+- Maintenir la forme d'un widget personnalisé lors du redimensionnement
+- Créer des layouts responsifs qui conservent les proportions des éléments
 
 *Propriétés*:
 
-- child : Le widget enfant à ajuster
-- fit : La stratégie d'ajustement souhaitée (par exemple, ` BoxFit.scaleDown`)
+- child : Le widget enfant dont conserver le rapport d'aspect
+- aspectRatio : Le rapport d'aspect souhaité (par exemple, 16/9)
+- height et width sont facultatifs mais si utilisé aspectRatio est ignoré
 
-*Types de fit*:
+*Exemple de calcul de aspectRatio*:
 
-- BoxFit.none : Pas d'ajustement
-- BoxFit.scaleDown : Réduction de taille si nécessaire pour tenir
-- BoxFit.scaleDownOnly : Réduction de taille uniquement si nécessaire
-- BoxFit.contain : Ajustement pour contenir le widget entier
-- BoxFit.cover : Ajustement pour couvrir tout l'espace disponible
-- BoxFit.fill : Ajustement pour remplir tout l'espace disponible
-- BoxFit.fitHeight : Ajustement pour adapter à la hauteur disponible
-- BoxFit.fitWidth : Ajustement pour adapter à la largeur disponible
+- Pour une image 1920x1080 : aspectRatio = 1920 / 1080 = 1.78 (ou 16/9)
+- Pour une vidéo 1280x720 : aspectRatio = 1280 / 720 = 1.78 (ou 16/9)
 
 *Exemple de code*:
-dart
-Container(
-  width: 200,
-  height: 100,
-  child: FittedBox( // Ajuster la taille de l'image pour qu'elle soit visible
-    fit: BoxFit.contain,
-    child: Image.asset('assets/image.jpg'),
-  ),
-)
-
-Ce code ajuste la taille de l'image pour qu'elle soit contenue dans le conteneur.
         */
         body: Center(
           child: Container(
-            height: 400,
+            height: 600,
             width: 200,
             color: Colors.amber,
-            child: FittedBox(
-              fit: BoxFit.contain,
+            child: AspectRatio(
+              aspectRatio: 10 / 9,
               child: Image.asset("images/image.png"),
             ),
           ),
