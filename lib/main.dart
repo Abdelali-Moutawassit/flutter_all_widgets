@@ -24,41 +24,34 @@ class MyApp extends StatelessWidget {
         //Center Widget
         /*
         *Définition*:
-Le widget DecoratedBox est utilisé pour ajouter une décoration autour d'un widget enfant, telle que une couleur d'arrière-plan, une bordure, une ombre ou un motif.
+Le widget FractionallySizedBox est utilisé pour redimensionner un widget enfant en fonction d'une fraction de la taille de son parent. Il permet de créer des layouts flexibles où les widgets s'adaptent à la taille de leur conteneur.
 
 *Utilisation*:
-Utilisez DecoratedBox pour:
+Utilisez FractionallySizedBox pour:
 
-- Ajouter une couleur d'arrière-plan à un widget
-- Créer une bordure autour d'un widget
-- Ajouter une ombre à un widget
-- Appliquer un motif de fond à un widget
+- Redimensionner un widget en fonction d'une fraction de la largeur du parent
+- Redimensionner un widget en fonction d'une fraction de la hauteur du parent
+- Créer des layouts responsifs où les widgets s'adaptent à la taille de l'écran
 
 *Propriétés*:
 
-- child : Le widget enfant à décorer
-- decoration : La décoration à appliquer (par exemple, BoxDecoration(color: Colors.blue))
-
-*Types de décoration*:
-
-- color : Couleur d'arrière-plan
-- image : Image de fond
-- border : Bordure
-- borderRadius : Rayon de bordure
-- boxShadow : Ombre
-- gradient : Dégradé de couleur
+- child : Le widget enfant à redimensionner
+- widthFactor : Fraction de la largeur du parent (par exemple, 0.5 pour 50%)
+- heightFactor : Fraction de la hauteur du parent (par exemple, 0.5 pour 50%)
+- alignment : Alignement du widget enfant dans son conteneur
 
 *Exemple de code*:
         */
         body: Center(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              // Décoration avec couleur et bordure
-              color: Colors.blue,
-              border: Border.all(width: 2, color: Colors.red),
-              borderRadius: BorderRadius.circular(10),
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.blue,
+            child: FractionallySizedBox(
+              widthFactor: 0.5, // prendre 50% de la taille de width de son parent
+              heightFactor: 0.75, // prendre 75% de la taille de hight de son parent
+              child: Container(color: Colors.red),
             ),
-            child: Container(height: 100, width: 100), // Widget décoré
           ),
         ),
       ),
