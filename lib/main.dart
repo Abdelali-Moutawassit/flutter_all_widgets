@@ -24,34 +24,36 @@ class MyApp extends StatelessWidget {
         //Center Widget
         /*
         *Définition*:
-Le widget FractionallySizedBox est utilisé pour redimensionner un widget enfant en fonction d'une fraction de la taille de son parent. Il permet de créer des layouts flexibles où les widgets s'adaptent à la taille de leur conteneur.
+Le widget IntrinsicHeight est utilisé pour conserver la hauteur intrinsèque d'un widget enfant, même lorsque son parent essaie de le redimensionner. Il permet de maintenir la hauteur naturelle d'un widget, comme la hauteur d'un texte ou d'une image.
 
 *Utilisation*:
-Utilisez FractionallySizedBox pour:
+Utilisez IntrinsicHeight pour:
 
-- Redimensionner un widget en fonction d'une fraction de la largeur du parent
-- Redimensionner un widget en fonction d'une fraction de la hauteur du parent
-- Créer des layouts responsifs où les widgets s'adaptent à la taille de l'écran
+- Conserver la hauteur naturelle d'un texte ou d'une image
+- Empêcher un widget d'être étiré ou compressé verticalement
+- Maintenir l'aspect ratio d'un widget en conservant sa hauteur intrinsèque
 
 *Propriétés*:
 
-- child : Le widget enfant à redimensionner
-- widthFactor : Fraction de la largeur du parent (par exemple, 0.5 pour 50%)
-- heightFactor : Fraction de la hauteur du parent (par exemple, 0.5 pour 50%)
-- alignment : Alignement du widget enfant dans son conteneur
+- child : Le widget enfant dont conserver la hauteur intrinsèque
 
 *Exemple de code*:
         */
         body: Center(
-          child: Container(
-            width: 300,
-            height: 300,
-            color: Colors.blue,
-            child: FractionallySizedBox(
-              widthFactor: 0.5, // prendre 50% de la taille de width de son parent
-              heightFactor: 0.75, // prendre 75% de la taille de hight de son parent
-              child: Container(color: Colors.red),
-            ),
+          child: Row(
+            children: [
+              IntrinsicHeight(
+                // Conserver la hauteur du texte
+                child: Text(
+                  'Texte avec hauteur intrinsèque ok ok',
+                  softWrap: false,
+                ),
+              ),
+              Expanded(
+                // Widget adjacent qui peut prendre l'espace disponible
+                child: Container(color: Colors.blue),
+              ),
+            ],
           ),
         ),
       ),
