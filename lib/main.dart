@@ -21,22 +21,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        body: Container(
-          width: 100,
-          height: 100,
-          color: Colors.amber,
-          margin: EdgeInsets.all(
-            10,
-          ), // Laisser l'espace entre container et les elements a l'exterieur
-          padding: EdgeInsets.all(10), // L'espace entre child et le widget
-          alignment: Alignment(
-            0,
-            0,
-          ), // Le deplacement de child par apport le container selon (x,y)
-          transform: Matrix4.rotationZ(-0.5),
-          constraints: BoxConstraints(minWidth: 0, maxWidth: 80), // constraonts
-          child: const Text("Test"),
-        ),
+        body: Padding(padding: EdgeInsets.all(20), child: Text("Test")),
       ),
     );
   }
