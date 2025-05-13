@@ -24,37 +24,41 @@ class MyApp extends StatelessWidget {
         //Center Widget
         /*
         *Définition*:
-Le widget ConstrainedBox est utilisé pour appliquer des contraintes de taille à un widget enfant, telles que des limites minimales et maximales de largeur et de hauteur. Il permet de contrôler la taille d'un widget en fonction des besoins de votre design.
+Le widget DecoratedBox est utilisé pour ajouter une décoration autour d'un widget enfant, telle que une couleur d'arrière-plan, une bordure, une ombre ou un motif.
 
 *Utilisation*:
-Utilisez ConstrainedBox pour:
+Utilisez DecoratedBox pour:
 
-- Définir une taille minimale pour un widget pour éviter qu'il ne soit trop petit
-- Définir une taille maximale pour un widget pour éviter qu'il ne dépasse une certaine limite
-- Contrôler la taille d'un widget en fonction de la taille de son parent
+- Ajouter une couleur d'arrière-plan à un widget
+- Créer une bordure autour d'un widget
+- Ajouter une ombre à un widget
+- Appliquer un motif de fond à un widget
 
 *Propriétés*:
 
-- child : Le widget enfant soumis aux contraintes
-- constraints : Les contraintes de taille à appliquer (par exemple, BoxConstraints(minWidth: 100, maxHeight: 200))
+- child : Le widget enfant à décorer
+- decoration : La décoration à appliquer (par exemple, BoxDecoration(color: Colors.blue))
 
-*Types de contraintes*:
+*Types de décoration*:
 
-- minWidth et minHeight : Largeur et hauteur minimales
-- maxWidth et maxHeight : Largeur et hauteur maximales
-- tight : Applique les contraintes de manière stricte (pas de marge)
-- loose : Applique les contraintes de manière souple (avec marge)
+- color : Couleur d'arrière-plan
+- image : Image de fond
+- border : Bordure
+- borderRadius : Rayon de bordure
+- boxShadow : Ombre
+- gradient : Dégradé de couleur
+
+*Exemple de code*:
         */
         body: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: 100,
-              maxWidth: 200,
-              minHeight: 100,
-              maxHeight: 200,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              // Décoration avec couleur et bordure
+              color: Colors.blue,
+              border: Border.all(width: 2, color: Colors.red),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: Container(color: Colors.amber, height: 50, width: 50),
-            // Malgre le container a 50 , 50 le BoxConstraints force a container de prendre le min de width et hight
+            child: Container(height: 100, width: 100), // Widget décoré
           ),
         ),
       ),
