@@ -24,37 +24,37 @@ class MyApp extends StatelessWidget {
         //Center Widget
         /*
         *Définition*:
-Le widget AspectRatio est utilisé pour maintenir le rapport d'aspect (largeur/hauteur) d'un widget enfant, même lorsque les dimensions de son parent changent. Il permet de conserver la forme originale d'un widget lors du redimensionnement.
+Le widget ConstrainedBox est utilisé pour appliquer des contraintes de taille à un widget enfant, telles que des limites minimales et maximales de largeur et de hauteur. Il permet de contrôler la taille d'un widget en fonction des besoins de votre design.
 
 *Utilisation*:
-Utilisez AspectRatio pour:
+Utilisez ConstrainedBox pour:
 
-- Conserver le rapport d'aspect d'une image ou d'une vidéo
-- Maintenir la forme d'un widget personnalisé lors du redimensionnement
-- Créer des layouts responsifs qui conservent les proportions des éléments
+- Définir une taille minimale pour un widget pour éviter qu'il ne soit trop petit
+- Définir une taille maximale pour un widget pour éviter qu'il ne dépasse une certaine limite
+- Contrôler la taille d'un widget en fonction de la taille de son parent
 
 *Propriétés*:
 
-- child : Le widget enfant dont conserver le rapport d'aspect
-- aspectRatio : Le rapport d'aspect souhaité (par exemple, 16/9)
-- height et width sont facultatifs mais si utilisé aspectRatio est ignoré
+- child : Le widget enfant soumis aux contraintes
+- constraints : Les contraintes de taille à appliquer (par exemple, BoxConstraints(minWidth: 100, maxHeight: 200))
 
-*Exemple de calcul de aspectRatio*:
+*Types de contraintes*:
 
-- Pour une image 1920x1080 : aspectRatio = 1920 / 1080 = 1.78 (ou 16/9)
-- Pour une vidéo 1280x720 : aspectRatio = 1280 / 720 = 1.78 (ou 16/9)
-
-*Exemple de code*:
+- minWidth et minHeight : Largeur et hauteur minimales
+- maxWidth et maxHeight : Largeur et hauteur maximales
+- tight : Applique les contraintes de manière stricte (pas de marge)
+- loose : Applique les contraintes de manière souple (avec marge)
         */
         body: Center(
-          child: Container(
-            height: 600,
-            width: 200,
-            color: Colors.amber,
-            child: AspectRatio(
-              aspectRatio: 10 / 9,
-              child: Image.asset("images/image.png"),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: 100,
+              maxWidth: 200,
+              minHeight: 100,
+              maxHeight: 200,
             ),
+            child: Container(color: Colors.amber, height: 50, width: 50),
+            // Malgre le container a 50 , 50 le BoxConstraints force a container de prendre le min de width et hight
           ),
         ),
       ),
